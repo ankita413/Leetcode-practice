@@ -29,3 +29,30 @@ public:
         return false;
     }
 };
+//2nd approach =using floyd cycle detection algo
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head==NULL || head->next==NULL)
+            return false;
+      ListNode *slowptr=head,*fastptr=head->next->next;
+      
+        while(slowptr!=NULL && fastptr!=NULL && fastptr->next!=NULL )
+        {
+    
+            if(slowptr==fastptr)
+                return true;
+                    slowptr=slowptr->next;
+            fastptr=fastptr->next->next;
+        }
+        return false;
+    }
+};
